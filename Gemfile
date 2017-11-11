@@ -21,6 +21,12 @@ gem 'uglifier'
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'owlcarousel2'
+gem 'font-awesome-rails'
+gem 'bootstrap-sass'
+gem 'animate.css-rails'
+gem 'waypoints-rails'
+gem 'coffee-rails'
 
 group :development do
   gem 'annotate'
