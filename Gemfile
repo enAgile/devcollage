@@ -9,9 +9,10 @@ gem 'rails', '~> 5.1.4'
 gem 'sqlite3'
 gem 'active_decorator'
 gem 'active_interaction'
-gem 'enumerize'
 gem 'devise'
 gem 'devise-i18n'
+gem 'enumerize'
+gem 'faraday'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
 gem 'puma', '~> 3.7'
@@ -48,12 +49,13 @@ group :test do
 end
 
 group :development, :test do
-  gem 'bullet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'webmock' # or webmock  gem 'bullet'
   gem 'gimei'
   gem 'i18n-debug'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-power_assert'
   gem 'rspec-rails'
+  gem 'vcr_cable'
 end

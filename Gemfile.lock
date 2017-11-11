@@ -56,9 +56,6 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
-    bullet (5.6.1)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.10.0)
     byebug (9.1.0)
     capybara (2.15.4)
       addressable
@@ -77,6 +74,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.2)
     dante (0.2.0)
     database_rewinder (0.8.2)
@@ -95,6 +94,8 @@ GEM
       activesupport (>= 3.2)
     erubi (1.7.0)
     execjs (2.7.0)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
@@ -105,6 +106,7 @@ GEM
       romaji
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashdiff (0.3.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.9.1)
@@ -157,6 +159,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.2)
+    multipart-post (2.0.0)
     netrc (0.11.0)
     nio4r (2.1.0)
     nokogiri (1.8.1)
@@ -245,6 +248,7 @@ GEM
     rspec-support (3.7.0)
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
+    safe_yaml (1.0.4)
     sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -286,7 +290,10 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
-    uniform_notifier (1.10.0)
+    vcr (3.0.3)
+    vcr_cable (1.0.0)
+      rails
+      vcr
     warden (1.2.7)
       rack (>= 1.0)
     waypoints-rails (0.1)
@@ -296,6 +303,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webmock (3.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -320,6 +331,7 @@ DEPENDENCIES
   devise-i18n
   enumerize
   font-awesome-rails
+  faraday
   fuubar
   gimei
   i18n-debug
@@ -346,7 +358,9 @@ DEPENDENCIES
   timecop
   uglifier
   waypoints-rails
+  vcr_cable
   web-console (>= 3.3.0)
+  webmock
 
 BUNDLED WITH
    1.16.0
