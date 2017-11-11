@@ -17,6 +17,7 @@ class Genre
     end
 
     def all_genres_from_api
+      # TODO url をキーにresponse をキャッシュするぞ！
       url = "http://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp"
       response = Faraday.get(url)
       result = JSON.parse(response.body)

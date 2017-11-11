@@ -2,9 +2,8 @@ class Media
   include ActiveModel::Model
 
   class << self
-    def top10_from_api(resource_name, genre, model = nil)
+    def top10_from_api(resource_name, genre)
       category = "top#{resource_name.to_s.pluralize}"
-      model ||= resource_name.to_s.classify.constantize
 
       url = "https://itunes.apple.com/jp/rss/#{category}/limit=10/genre=#{genre}/json"
       response = Faraday.get(url)
@@ -25,7 +24,7 @@ class Media
     end
 
     def musics_top10(genre)
-      top10_from_api(:songs, genre, Music).map do |entry|
+      top10_from_api(:songs, genre).map do |entry|
         Music.new(
           name: entry['im:name']['label'],
           copyrights: entry['im:name']['rights'],

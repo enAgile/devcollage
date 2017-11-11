@@ -122,7 +122,7 @@
                         <div class="col-sm-3">
                           <ul>
                             <%- genre_group.each do |genre| -%>
-                              <li><a href="/category?genreId=33&subgenreId=<%= movie.id %>"><%= movie.name %></a></li>
+                              <li><a href="#"><%= genre.name %></a></li>
                             <%- end -%>
                           </ul>
                         </div>
@@ -144,7 +144,7 @@
                         <div class="col-sm-3">
                           <ul>
                             <%- genre_group.each do |genre| -%>
-                              <li><a href="/category?genreId=34&subgenreId=${music.id}">${music.name}</a></li>
+                              <li><a href="#"><%= genre.name %></a></li>
                             <%- end -%>
                           </ul>
                         </div>
@@ -237,7 +237,7 @@
               <h5>Movie</h5>
               <ul>
                 <%- MovieGenre.all.each do |genre| -%>
-                  <li><a href="/category?genreId=33&subgenreId=${movie.id}"><%= genre.name %></a></li>
+                  <li><a href="#"><%= genre.name %></a></li>
                 <%- end -%>
               </ul>
             </div>
@@ -246,7 +246,7 @@
               <h5>Music</h5>
               <ul>
                 <%- MusicGenre.all.each do |genre| -%>
-                  <li><a href="/category?genreId=34&subgenreId=${music.id}"><%= genre.name %></a></li>
+                  <li><a href="#"><%= genre.name %></a></li>
                 <%- end -%>
               </ul>
               <hr class="hidden-md hidden-lg">
