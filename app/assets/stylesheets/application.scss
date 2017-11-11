@@ -1,0 +1,41 @@
+@import 'default';
+@import 'font-awesome';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'owlcarousel2/owl.carousel';
+@import 'owlcarousel2/owl.theme.default';
+@import 'animate';
+
+$color_1: #999999;
+
+.img-index-music {
+	height: 150px;
+}
+.img-index-movie {
+	height: 250px;
+}
+.img-category-list {
+	height: 250px;
+}
+.layout-menu-index {
+	position: inherit;
+}
+#top {
+	.col-sm-3 {
+		.layout-menu-font {
+			color: $color_1;
+		}
+	}
+	.menu1 {
+		padding-bottom: 30px;
+	}
+}
+#content {
+	.product {
+		.text {
+			h3.text-category-list-title {
+				height: 60px;
+			}
+		}
+	}
+}
