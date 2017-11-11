@@ -322,7 +322,6 @@ DEPENDENCIES
   animate.css-rails
   annotate
   bootstrap-sass
-  bullet
   byebug
   capybara
   coffee-rails
@@ -330,8 +329,8 @@ DEPENDENCIES
   devise
   devise-i18n
   enumerize
-  font-awesome-rails
   faraday
+  font-awesome-rails
   fuubar
   gimei
   i18n-debug
@@ -357,10 +356,10 @@ DEPENDENCIES
   stripe-ruby-mock (~> 2.4.0)
   timecop
   uglifier
-  waypoints-rails
   vcr_cable
+  waypoints-rails
   web-console (>= 3.3.0)
   webmock
 
 BUNDLED WITH
-   1.16.0
+   1.15.4
