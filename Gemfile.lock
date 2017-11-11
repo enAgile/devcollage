@@ -322,6 +322,7 @@ DEPENDENCIES
   active_interaction
   animate.css-rails
   annotate
+  bootstrap-sass
   byebug
   capybara
   coffee-rails
@@ -330,6 +331,7 @@ DEPENDENCIES
   devise-i18n
   enumerize
   faraday
+  font-awesome-rails
   fuubar
   gimei
   i18n-debug
