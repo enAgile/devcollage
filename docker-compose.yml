@@ -1,0 +1,19 @@
+db:
+  image: postgres
+  ports:
+    - "5432"
+web:
+  build: .
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  volumes:
+    - .:/devcollege
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  volumes_from:
+    - bundle
+bundle:
+  image: devcollege_web
+  volumes:
+    - /bundle
