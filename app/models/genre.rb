@@ -1,6 +1,7 @@
 class Genre
   include ActiveModel::Model
-  # attr_accessor *%i(name id url rssUrls chartUrls subgenres)
+  attr_accessor *%i(name id)
+
   class << self
     def music_genres
       @music_genres ||= all_genres[:music_genres]
@@ -8,6 +9,11 @@ class Genre
 
     def movie_genres
       @movie_genres ||= all_genres[:movie_genres]
+    end
+
+    def find(name)
+      # XXX
+      music_genres.first
     end
 
     private
@@ -31,5 +37,24 @@ class Genre
         end
       end
     end
+  end
+
+  # XXX
+  def parent
+    MovieGenre.all.first
+  end
+
+  # XXX
+  def top10medias
+    case self
+    when MovieGenre
+      Movie.top10(:movie)
+    when MusicGenre
+      Music.top10(:music)
+    end
+  end
+
+  def to_param
+    name
   end
 end

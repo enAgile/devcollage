@@ -31,7 +31,7 @@
         <h5>Movie</h5>
         <ul>
           <%- MovieGenre.all.each do |genre| -%>
-            <li><a href="#"><%= genre.name %></a></li>
+            <li><%= link_to genre.name, genre_path(genre) %></li>
           <%- end -%>
         </ul>
       </div>
@@ -40,7 +40,7 @@
         <h5>Music</h5>
         <ul>
           <%- MusicGenre.all.each do |genre| -%>
-            <li><a href="#"><%= genre.name %></a></li>
+            <li><%= link_to genre.name, genre_path(genre) %></li>
           <%- end -%>
         </ul>
         <hr class="hidden-md hidden-lg">

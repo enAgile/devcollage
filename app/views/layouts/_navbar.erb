@@ -37,7 +37,7 @@
                     <div class="col-sm-3">
                       <ul>
                         <%- genre_group.each do |genre| -%>
-                          <li><a href="#"><%= genre.name %></a></li>
+                          <li><%= link_to genre.name, genre_path(genre) %></li>
                         <%- end -%>
                       </ul>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="col-sm-3">
                       <ul>
                         <%- genre_group.each do |genre| -%>
-                          <li><a href="#"><%= genre.name %></a></li>
+                          <li><%= link_to genre.name, genre_path(genre) %></li>
                         <%- end -%>
                       </ul>
                     </div>
