@@ -1,0 +1,32 @@
+<div class="product-slider">
+  <%- items.each.with_index(1) do |item, index| -%>
+    <div class="item">
+      <div class="product">
+        <div class="flip-container">
+          <div align="center">
+            <p><h4><%= index %>位</h4></p>
+            <div class="flipper">
+              <div class="front">
+                <a href="#">
+                  <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-index-movie">
+                </a>
+              </div>
+              <div class="back">
+                <a href="#">
+                  <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-index-movie">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="invisible">
+          <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-index-movie">
+        </a>
+        <div class="text">
+          <h3><a href="#"><%= item.title %></a></h3>
+          <p class="price">￥<%= item.price.to_s %></p>
+        </div>
+      </div>
+    </div>
+  <%- end -%>
+</div>

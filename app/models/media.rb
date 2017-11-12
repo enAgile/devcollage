@@ -43,4 +43,14 @@ class Media
       price
     end
   end
+
+  # XXX
+  def image
+    '#'
+  end
+
+  # XXX
+  def title
+    name
+  end
 end
