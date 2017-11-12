@@ -5,7 +5,7 @@
         <ul class="breadcrumb">
           <li><a href="/">Home</a></li>
           <%- if @genre.parent.present? -%>
-            <li><a href="#"><%= @genre.parent.name %></a></li>
+            <li><%= link_to @genre.parent.name, genre_path(@genre.parent) %></li>
           <%- end -%>
           <li><%= @genre.name %></li>
         </ul>
@@ -13,53 +13,8 @@
 
       <div class="col-md-3">
         <!-- *** MENUS AND FILTERS *** -->
-        <div class="panel panel-default sidebar-menu">
-
-          <div class="panel-heading">
-            <h3 class="panel-title">Ranking</h3>
-          </div>
-
-          <div class="panel-body">
-            <ul class="nav nav-pills nav-stacked category-menu">
-              <li class="<%= 'active' if @genre.id == 33 %>">
-                <a href="#">MOVIE</a>
-                <ul>
-                  <%- MovieGenre.all.each do |movie| -%>
-                    <li>
-                      <%- if movie.id == @genre.id -%>
-                        <div style="background:#4fbfa8;"><%= link_to movie.name, genre_path(movie) %></div>
-                      <%- else -%>
-                        <%= link_to movie.name, genre_path(movie) %>
-                      <%- end -%>
-                    </li>
-                  <%- end -%>
-                </ul>
-              </li>
-              <li class="<%= 'active' if @genre.id == 34 %>">
-                <a href="#">MUSIC</a>
-                <ul>
-                  <%- MusicGenre.all.each do |music| -%>
-                    <li>
-                      <%- if music.id == @genre.id -%>
-                        <div style="background:#4fbfa8;"><%= link_to music.name, genre_path(music) %></div>
-                      <%- else -%>
-                        <%= link_to music.name, genre_path(music) %>
-                      <%- end -%>
-                    </li>
-                  <%- end -%>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- *** 検索機能用エリア
-          <div class="panel panel-default sidebar-menu">
-          <div class="panel-heading">
-          <h3 class="panel-title">Search</h3>
-          </div>
-          </div>
-          *** -->
-          <!-- *** MENUS AND FILTERS END *** -->
+        <%= render 'sidebar', current_genre: @genre %>
+        <!-- *** MENUS AND FILTERS END *** -->
       </div>
 
       <div class="col-md-9">
