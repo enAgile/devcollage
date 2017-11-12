@@ -32,26 +32,28 @@
                     <p><h3><%= index %>位</h3></p>
                     <div class="flipper">
                       <div class="front">
-                        <a href="#">
+                        <%= link_to medium_path(item) do %>
                           <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                        </a>
+                        <%- end -%>
                       </div>
                       <div class="back">
-                        <a href="#">
+                        <%= link_to medium_path(item) do %>
                           <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                        </a>
+                        <%- end -%>
                       </div>
                     </div>
                   </div>
                 </div>
-                <a href="#" class="invisible">
+                <%= link_to medium_path(item), class: 'invisible' do %>
                   <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                </a>
+                <%- end -%>
                 <div class="text">
-                  <h3 class="text-category-list-title"><a href="#"><%= item.title %></a></h3>
+                  <h3 class="text-category-list-title">
+                    <%= link_to item.title, medium_path(item) %>
+                  </h3>
                   <p class="price">￥<%= item.price %></p>
                   <p class="buttons">
-                  <a href="#" class="btn btn-default">View detail</a>
+                  <%= link_to 'View detail', medium_path(item), class: 'btn btn-default' %>
                   <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                   </p>
                 </div>
