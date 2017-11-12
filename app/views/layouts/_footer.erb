@@ -1,0 +1,73 @@
+<div id="footer" data-animate="fadeInUp">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <h4>Pages</h4>
+
+        <ul>
+          <li><a href="https://enagile.jp">About us</a>
+          </li>
+          <li><a href="mailto:info@enagile.jp">Contact us</a>
+          </li>
+        </ul>
+
+        <hr>
+
+        <h4>User section</h4>
+
+        <ul>
+          <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+          </li>
+          <li><a href="/register">Regiter</a>
+          </li>
+        </ul>
+
+        <hr class="hidden-md hidden-lg hidden-sm">
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <h4>Ranking</h4>
+
+        <h5>Movie</h5>
+        <ul>
+          <%- MovieGenre.all.each do |genre| -%>
+            <li><%= link_to genre.name, genre_path(genre) %></li>
+          <%- end -%>
+        </ul>
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <h5>Music</h5>
+        <ul>
+          <%- MusicGenre.all.each do |genre| -%>
+            <li><%= link_to genre.name, genre_path(genre) %></li>
+          <%- end -%>
+        </ul>
+        <hr class="hidden-md hidden-lg">
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <h4>Where to find us</h4>
+
+        <p><a href="https://enagile.jp"><strong>Enagile Inc.</strong></a>
+        <br>
+        <strong>Japan</strong>
+        </p>
+
+        <a href="http://www.locaworks.co.jp/recruit/index.html">Go to contact page</a>
+
+        <hr class="hidden-md hidden-lg">
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+        <hr>
+        <h4>Stay in touch</h4>
+
+        <p class="social">
+        <a href="http://www.facebook.com/enAgile" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+        <a href="mailto:info@enagile.jp" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
