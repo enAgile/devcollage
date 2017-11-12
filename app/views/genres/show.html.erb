@@ -5,7 +5,7 @@
         <ul class="breadcrumb">
           <li><a href="/">Home</a></li>
           <%- if @genre.parent.present? -%>
-            <li><a href="#"><%= @genre.parent.name %></a></li>
+            <li><%= link_to @genre.parent.name, genre_path(@genre.parent) %></li>
           <%- end -%>
           <li><%= @genre.name %></li>
         </ul>
@@ -13,53 +13,8 @@
 
       <div class="col-md-3">
         <!-- *** MENUS AND FILTERS *** -->
-        <div class="panel panel-default sidebar-menu">
-
-          <div class="panel-heading">
-            <h3 class="panel-title">Ranking</h3>
-          </div>
-
-          <div class="panel-body">
-            <ul class="nav nav-pills nav-stacked category-menu">
-              <li class="<%= 'active' if @genre.id == 33 %>">
-                <a href="#">MOVIE</a>
-                <ul>
-                  <%- MovieGenre.all.each do |movie| -%>
-                    <li>
-                      <%- if movie.id == @genre.id -%>
-                        <div style="background:#4fbfa8;"><%= link_to movie.name, genre_path(movie) %></div>
-                      <%- else -%>
-                        <%= link_to movie.name, genre_path(movie) %>
-                      <%- end -%>
-                    </li>
-                  <%- end -%>
-                </ul>
-              </li>
-              <li class="<%= 'active' if @genre.id == 34 %>">
-                <a href="#">MUSIC</a>
-                <ul>
-                  <%- MusicGenre.all.each do |music| -%>
-                    <li>
-                      <%- if music.id == @genre.id -%>
-                        <div style="background:#4fbfa8;"><%= link_to music.name, genre_path(music) %></div>
-                      <%- else -%>
-                        <%= link_to music.name, genre_path(music) %>
-                      <%- end -%>
-                    </li>
-                  <%- end -%>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- *** 検索機能用エリア
-          <div class="panel panel-default sidebar-menu">
-          <div class="panel-heading">
-          <h3 class="panel-title">Search</h3>
-          </div>
-          </div>
-          *** -->
-          <!-- *** MENUS AND FILTERS END *** -->
+        <%= render 'sidebar', current_genre: @genre %>
+        <!-- *** MENUS AND FILTERS END *** -->
       </div>
 
       <div class="col-md-9">
@@ -77,26 +32,28 @@
                     <p><h3><%= index %>位</h3></p>
                     <div class="flipper">
                       <div class="front">
-                        <a href="#">
+                        <%= link_to medium_path(item) do %>
                           <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                        </a>
+                        <%- end -%>
                       </div>
                       <div class="back">
-                        <a href="#">
+                        <%= link_to medium_path(item) do %>
                           <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                        </a>
+                        <%- end -%>
                       </div>
                     </div>
                   </div>
                 </div>
-                <a href="#" class="invisible">
+                <%= link_to medium_path(item), class: 'invisible' do %>
                   <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                </a>
+                <%- end -%>
                 <div class="text">
-                  <h3 class="text-category-list-title"><a href="#"><%= item.title %></a></h3>
+                  <h3 class="text-category-list-title">
+                    <%= link_to item.title, medium_path(item) %>
+                  </h3>
                   <p class="price">￥<%= item.price %></p>
                   <p class="buttons">
-                  <a href="#" class="btn btn-default">View detail</a>
+                  <%= link_to 'View detail', medium_path(item), class: 'btn btn-default' %>
                   <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                   </p>
                 </div>

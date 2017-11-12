@@ -1,0 +1,66 @@
+<div id="all">
+
+	<div id="content">
+		<div class="container">
+
+			<div class="col-md-12">
+				<ul class="breadcrumb">
+					<li><a href="/">Home</a></li>
+          <%- if @medium.genre.parent.present? -%>
+            <li><%= link_to @medium.genre.parent.name, genre_path(@medium.genre.parent) %></li>
+          <%- end -%>
+          <li><%= link_to @medium.genre.name, genre_path(@medium.genre) %></li>
+          <li><%= @medium.name %></li>
+				</ul>
+			</div>
+
+			<div class="col-md-3">
+				<!-- *** MENUS AND FILTERS *** -->
+        <%= render 'sidebar', current_genre: @medium.genre %>
+				<!-- *** MENUS AND FILTERS END *** -->
+			</div>
+
+			<div class="col-md-9">
+				<div class="row" id="productMain">
+					<div class="col-sm-6">
+						<div id="mainImage">
+              <img src="<%= @medium.image %>" alt="<%= @medium.title %>" width="400" class="img-responsive">
+						</div>
+
+					</div>
+					<div class="col-sm-6">
+						<div class="box">
+              <h1 class="text-center"><%= @medium.title %></h1>
+							<p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material & care and sizing</a>
+							</p>
+              <p class="price">￥<%= @medium.price %></p>
+
+							<p class="text-center buttons">
+							<a href="basket" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+							<a href="basket" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="box" id="details">
+          <%- %i(summary artist album).each do |attr| -%>
+            <%- if @medium.respond_to?(attr) && @medium.send(attr).present? -%>
+              <h4><%= attr.to_s.capitalize %></h4>
+              <p><%= @medium.send(attr) %></p>
+            <%- end -%>
+          <%- end -%>
+
+					<hr>
+					<div class="social">
+						<h4>Show it to your friends</h4>
+						<p>
+            <a href="http://www.facebook.com/dialog/feed?app_id=xxxxxxxxxx&picture=<%= @medium.image %>&name=My favorite <%= @medium.genre.name %>! - <%= @medium.title %>&display=page" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/share?text=My favorite <%= @medium.genre.name %>! - <%= @medium.title %>" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

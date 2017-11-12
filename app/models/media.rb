@@ -2,6 +2,11 @@ class Media
   include ActiveModel::Model
 
   class << self
+    # XXX
+    def find(name)
+      movies_top10(:movie).first
+    end
+
     def top10_from_api(resource_name, genre)
       category = "top#{resource_name.to_s.pluralize}"
 
@@ -46,11 +51,20 @@ class Media
 
   # XXX
   def image
-    '#'
+    'http://is2.mzstatic.com/image/thumb/Video3/v4/83/37/e1/8337e131-288a-05f4-baee-567495d7be6f/source/400x400bb.jpg'
   end
 
   # XXX
   def title
+    name
+  end
+
+  # XXX
+  def genre
+    Genre.music_genres.first
+  end
+
+  def to_param
     name
   end
 end
