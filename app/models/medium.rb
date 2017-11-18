@@ -12,7 +12,7 @@ class Medium
     def top10_from_api(resource_name, genre)
       category = "top#{resource_name.to_s.pluralize}"
 
-      url = "https://itunes.apple.com/jp/rss/#{category}/limit=10/genre=#{genre}/json"
+      url = "https://itunes.apple.com/jp/rss/#{category}/limit=10/genre=#{genre.id}/json"
       response = Faraday.get(url)
       result = JSON.parse(response.body)
       result['feed']['entry'] || []

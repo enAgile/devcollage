@@ -56,15 +56,12 @@ class Genre
     Genre.find(parent_id)
   end
 
-  # XXX
   def top10medias
     case parent_id
     when '33'
-      Movie.top10(:movie)
+      Movie.top10(self)
     when '34'
-      Music.top10(:music)
-    else
-      []
+      Music.top10(self)
     end
   end
 
