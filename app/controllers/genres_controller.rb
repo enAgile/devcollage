@@ -1,6 +1,5 @@
 class GenresController < ApplicationController
   def show
-    # XXX
-    @genre = Genre.find(params[:id])
+    @genre = Genre.find_by(name: params[:id])
   end
 end
