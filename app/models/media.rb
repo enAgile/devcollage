@@ -1,6 +1,8 @@
 class Media
   include ActiveModel::Model
 
+  attr_accessor *%i(name summary rental_price price copyrights artist image_url genre_id)
+
   class << self
     # XXX
     def find(name)
@@ -23,7 +25,9 @@ class Media
           copyrights: entry['im:name']['rights'],
           rental_price: build_price(entry['im:rentalPrice']),
           price: build_price(entry['im:price']),
-          summary: entry['summary']['lable']
+          summary: entry['summary']['lable'],
+          image_url: entry['im:image'].last['label'],
+          genre_id: entry['category']['attributes']['im:id']
         )
       end
     end
@@ -34,7 +38,9 @@ class Media
           name: entry['im:name']['label'],
           copyrights: entry['im:name']['rights'],
           rental_price: build_price(entry['im:rentalPrice']),
-          price: build_price(entry['im:price'])
+          price: build_price(entry['im:price']),
+          image_url: entry['im:image'].last['label'],
+          genre_id: entry['category']['attributes']['im:id']
         )
       end
     end
@@ -49,19 +55,14 @@ class Media
     end
   end
 
-  # XXX
-  def image
-    'http://is2.mzstatic.com/image/thumb/Video3/v4/83/37/e1/8337e131-288a-05f4-baee-567495d7be6f/source/400x400bb.jpg'
-  end
+  # XXX image が不要
+  alias image image_url
 
-  # XXX
-  def title
-    name
-  end
+  # XXX title が不要
+  alias title name
 
-  # XXX
   def genre
-    Genre.music_genres.first
+    Genre.find(genre_id)
   end
 
   def to_param
