@@ -27,49 +27,11 @@
         <li>
           <a href="/">Home</a>
         </li>
-        <li class="dropdown yamm-fw">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Movie <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li>
-              <div class="yamm-content">
-                <div class="row">
-                  <%- Genre.genres(:movie).each_slice(15) do |genre_group| -%>
-                    <div class="col-sm-3">
-                      <ul>
-                        <%- genre_group.each do |genre| -%>
-                          <li><%= link_to genre.name, genre_path(genre) %></li>
-                        <%- end -%>
-                      </ul>
-                    </div>
-                  <%- end -%>
-                </div>
-              </div>
-              <!-- /.yamm-content -->
-            </li>
-          </ul>
-        </li>
-
-        <li class="dropdown yamm-fw">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Music <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li>
-              <div class="yamm-content">
-                <div class="row">
-                  <%- Genre.genres(:music).each_slice(15) do |genre_group| -%>
-                    <div class="col-sm-3">
-                      <ul>
-                        <%- genre_group.each do |genre| -%>
-                          <li><%= link_to genre.name, genre_path(genre) %></li>
-                        <%- end -%>
-                      </ul>
-                    </div>
-                  <%- end -%>
-                </div>
-              </div>
-              <!-- /.yamm-content -->
-            </li>
-          </ul>
-        </li>
+        <%- %i(movie music).each do |genre_type| -%>
+          <li class="dropdown yamm-fw">
+            <%= render 'dropdown', genre_type: genre_type %>
+          </li>
+        <%- end -%>
       </ul>
     </div>
     <!--/.nav-collapse -->
