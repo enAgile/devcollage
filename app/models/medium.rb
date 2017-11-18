@@ -6,7 +6,7 @@ class Medium
   class << self
     # XXX
     def find(name)
-      movies_top10(:movie).first
+      movies_top10(Genre.find('33')).first
     end
 
     def top10_from_api(resource_name, genre)
