@@ -4,12 +4,17 @@ class Genre
 
   class << self
     def genres(type)
-      all_genres[type.to_sym]
+      where(type: type)
     end
 
     def find(name)
-      # XXX
-      music_genres.first
+      where(name: name)
+    end
+
+    def where(conditions = {})
+      all_genres.select do |g|
+        conditions.all? { |key, value| g.send(key) == value }
+      end
     end
 
     private
@@ -23,15 +28,16 @@ class Genre
       url = "http://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp"
       response = Faraday.get(url)
       result = JSON.parse(response.body)
-      # puts result
-      result.values.each.with_object({}) do |value, ret|
+
+      # FIXME: この実装なんとかならない？ > flatten
+      result.values.each.with_object([]) do |value, ret|
         case  value["name"]
         when "映画"
-          ret[:movie] = value["subgenres"].values.map{|subgenre| new(subgenre.slice(*%w(id name url)).merge(type: :movie))}
+          ret << value["subgenres"].values.map { |subgenre| new(subgenre.slice(*%w(id name url)).merge(type: :movie)) }
         when "ミュージック"
-          ret[:music] = value["subgenres"].values.map{|subgenre| new(subgenre.slice(*%w(id name url)).merge(type: :music))}
+          ret << value["subgenres"].values.map { |subgenre| new(subgenre.slice(*%w(id name url)).merge(type: :music)) }
         end
-      end
+      end.flatten
     end
   end
 
