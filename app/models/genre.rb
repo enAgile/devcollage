@@ -1,14 +1,10 @@
 class Genre
   include ActiveModel::Model
-  attr_accessor *%i(name id)
+  attr_accessor *%i(id name url type)
 
   class << self
-    def music_genres
-      @music_genres ||= all_genres[:music_genres]
-    end
-
-    def movie_genres
-      @movie_genres ||= all_genres[:movie_genres]
+    def genres(type)
+      all_genres[type.to_sym]
     end
 
     def find(name)
@@ -31,9 +27,9 @@ class Genre
       result.values.each.with_object({}) do |value, ret|
         case  value["name"]
         when "映画"
-          ret[:movie_genres] = value["subgenres"].values.map{|subgenre| MovieGenre.new(subgenre.slice(*%w(id name url)))}
+          ret[:movie] = value["subgenres"].values.map{|subgenre| new(subgenre.slice(*%w(id name url)).merge(type: :movie))}
         when "ミュージック"
-          ret[:music_genres] = value["subgenres"].values.map{|subgenre| MusicGenre.new(subgenre.slice(*%w(id name url)))}
+          ret[:music] = value["subgenres"].values.map{|subgenre| new(subgenre.slice(*%w(id name url)).merge(type: :music))}
         end
       end
     end
@@ -41,15 +37,15 @@ class Genre
 
   # XXX
   def parent
-    MovieGenre.all.first
+    Genre.genres(:music).first
   end
 
   # XXX
   def top10medias
-    case self
-    when MovieGenre
+    case type
+    when :movie
       Movie.top10(:movie)
-    when MusicGenre
+    when music
       Music.top10(:music)
     end
   end

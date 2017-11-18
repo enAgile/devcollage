@@ -9,12 +9,12 @@
       <li class="<%= 'active' if current_genre.id == 33 %>">
         <a href="#">MOVIE</a>
         <ul>
-          <%- MovieGenre.all.each do |movie| -%>
+          <%- Genre.genres(:movie).each do |genre| -%>
             <li>
-              <%- if movie.id == current_genre.id -%>
-                <div style="background:#4fbfa8;"><%= link_to movie.name, genre_path(movie) %></div>
+              <%- if genre.id == current_genre.id -%>
+                <div style="background:#4fbfa8;"><%= link_to genre.name, genre_path(genre) %></div>
               <%- else -%>
-                <%= link_to movie.name, genre_path(movie) %>
+                <%= link_to genre.name, genre_path(genre) %>
               <%- end -%>
             </li>
           <%- end -%>
@@ -23,12 +23,12 @@
       <li class="<%= 'active' if current_genre.id == 34 %>">
         <a href="#">MUSIC</a>
         <ul>
-          <%- MusicGenre.all.each do |music| -%>
+          <%- Genre.genres(:music).each do |genre| -%>
             <li>
-              <%- if music.id == current_genre.id -%>
-                <div style="background:#4fbfa8;"><%= link_to music.name, genre_path(music) %></div>
+              <%- if genre.id == current_genre.id -%>
+                <div style="background:#4fbfa8;"><%= link_to genre.name, genre_path(genre) %></div>
               <%- else -%>
-                <%= link_to music.name, genre_path(music) %>
+                <%= link_to genre.name, genre_path(genre) %>
               <%- end -%>
             </li>
           <%- end -%>
