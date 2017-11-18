@@ -55,8 +55,10 @@ class Medium
     end
   end
 
-  # XXX image が不要
-  alias image image_url
+  # XXX image が不適切, 一覧では荒い画像でよい
+  def image
+    image_url.sub(/\d+x\d+bb-\d+.jpg/, '400x400bb.jpg')
+  end
 
   # XXX title が不要
   alias title name
