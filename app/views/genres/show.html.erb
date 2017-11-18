@@ -1,36 +1,32 @@
-<div id="all">
-  <div id="content">
-    <div class="container">
-      <div class="col-md-12">
-        <ul class="breadcrumb">
-          <li><a href="/">Home</a></li>
-          <%- if @genre.parent.present? -%>
-            <li><%= link_to @genre.parent.name, genre_path(@genre.parent) %></li>
-          <%- end -%>
-          <li><%= @genre.name %></li>
-        </ul>
-      </div>
+<div class="container">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <%- if @genre.parent.present? -%>
+        <li><%= link_to @genre.parent.name, genre_path(@genre.parent) %></li>
+      <%- end -%>
+      <li><%= @genre.name %></li>
+    </ul>
+  </div>
 
-      <div class="col-md-3">
-        <!-- *** MENUS AND FILTERS *** -->
-        <%= render 'sidebar', current_genre: @genre %>
-        <!-- *** MENUS AND FILTERS END *** -->
-      </div>
+  <div class="col-md-3">
+    <!-- *** MENUS AND FILTERS *** -->
+    <%= render 'sidebar', current_genre: @genre %>
+    <!-- *** MENUS AND FILTERS END *** -->
+  </div>
 
-      <div class="col-md-9">
-        <div class="box">
-          <h1><%= @genre.name %></h1>
-          <p>上位10商品を表示しています。</p>
+  <div class="col-md-9">
+    <div class="box">
+      <h1><%= @genre.name %></h1>
+      <p>上位10商品を表示しています。</p>
+    </div>
+
+    <div class="row products">
+      <%- @genre.top10medias.each.with_index(1) do |medium, rank| -%>
+        <div class="col-md-4 col-sm-6">
+          <%= render 'media/medium', medium: medium, rank: rank %>
         </div>
-
-        <div class="row products">
-          <%- @genre.top10medias.each.with_index(1) do |medium, rank| -%>
-            <div class="col-md-4 col-sm-6">
-              <%= render 'media/medium', medium: medium, rank: rank %>
-            </div>
-          <%- end -%>
-        </div>
-      </div>
+      <%- end -%>
     </div>
   </div>
 </div>
