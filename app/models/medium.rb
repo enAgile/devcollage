@@ -1,4 +1,4 @@
-class Media
+class Medium
   include ActiveModel::Model
 
   attr_accessor *%i(name summary rental_price price copyrights artist image_url genre_id)
