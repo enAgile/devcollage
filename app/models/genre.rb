@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: genres
+#
+#  id              :integer          not null, primary key
+#  name            :string           not null
+#  parent_id       :integer
+#  itunes_genre_id :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_genres_on_parent_id  (parent_id)
+#
+
 class Genre < ApplicationRecord
   belongs_to :parent, class_name: 'Genre', required: false
 
