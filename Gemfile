@@ -15,7 +15,6 @@ gem 'enumerize'
 gem 'faraday'
 gem 'jbuilder', '~> 2.5'
 gem 'jp_prefecture'
-gem 'kaminari'
 gem 'puma', '~> 3.7'
 gem 'uglifier'
 
@@ -28,7 +27,6 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass'
 gem 'animate.css-rails'
 gem 'waypoints-rails'
-gem 'coffee-rails'
 
 group :development do
   gem 'annotate'
@@ -56,7 +54,5 @@ group :development, :test do
   gem 'i18n-debug'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'rspec-power_assert'
   gem 'rspec-rails'
-  gem 'vcr_cable'
 end

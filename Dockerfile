@@ -13,7 +13,7 @@ RUN apt-get update -qq && apt-get install -y \
       sqlite3
 
 RUN npm install -g phantomjs
-RUN gem install bundler -v 1.15.0
+RUN gem install bundler -v 1.16.0
 
 # Application
 ENV app_name devcollege
