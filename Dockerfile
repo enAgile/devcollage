@@ -11,8 +11,10 @@ RUN apt-get update -qq && apt-get install -y \
       graphviz \
       imagemagick \
       sqlite3
-
-RUN npm install -g phantomjs
+RUN npm install -g phantomjs yarn n
+RUN n --stable
+RUN n --latest
+RUN n latest
 RUN gem install bundler -v 1.16.0
 
 # Application
