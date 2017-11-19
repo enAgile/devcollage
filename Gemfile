@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jp_prefecture'
 gem 'puma', '~> 3.7'
 gem 'uglifier'
+gem 'webpacker'
 
 # assets
 gem 'sass-rails'
