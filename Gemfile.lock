@@ -149,6 +149,7 @@ GEM
     orm_adapter (0.5.0)
     owlcarousel2 (2.2.0.pre.4.pre.g22132e0)
       sass
+    pg (0.21.0)
     poltergeist (1.16.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -310,6 +311,7 @@ DEPENDENCIES
   letter_opener_web
   listen
   owlcarousel2
+  pg
   poltergeist
   pry-byebug
   pry-rails
