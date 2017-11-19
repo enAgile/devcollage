@@ -66,6 +66,6 @@ class Genre
   end
 
   def to_param
-    name
+    id
   end
 end
