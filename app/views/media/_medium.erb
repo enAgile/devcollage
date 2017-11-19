@@ -1,0 +1,32 @@
+<div class="product">
+  <div class="flip-container">
+    <div align="center">
+      <p><h3><%= rank %>位</h3></p>
+      <div class="flipper">
+        <div class="front">
+          <%= link_to medium_path(medium) do %>
+            <img src="<%= medium.image %>" alt="<%= medium.title %>" class="img-responsive img-category-list">
+          <%- end -%>
+        </div>
+        <div class="back">
+          <%= link_to medium_path(medium) do %>
+            <img src="<%= medium.image %>" alt="<%= medium.title %>" class="img-responsive img-category-list">
+          <%- end -%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to medium_path(medium), class: 'invisible' do %>
+    <img src="<%= medium.image %>" alt="<%= medium.title %>" class="img-responsive img-category-list">
+  <%- end -%>
+  <div class="text">
+    <h3 class="text-category-list-title">
+      <%= link_to medium.title, medium_path(medium) %>
+    </h3>
+    <p class="price"><%= medium.price %></p>
+    <p class="buttons">
+    <%= link_to 'View detail', medium_path(medium), class: 'btn btn-default' %>
+    <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+    </p>
+  </div>
+</div>

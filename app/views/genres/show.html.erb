@@ -1,67 +1,32 @@
-<div id="all">
-  <div id="content">
-    <div class="container">
-      <div class="col-md-12">
-        <ul class="breadcrumb">
-          <li><a href="/">Home</a></li>
-          <%- if @genre.parent.present? -%>
-            <li><%= link_to @genre.parent.name, genre_path(@genre.parent) %></li>
-          <%- end -%>
-          <li><%= @genre.name %></li>
-        </ul>
-      </div>
+<div class="container">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <%- if @genre.parent.present? -%>
+        <li><%= link_to @genre.parent.name, genre_path(@genre.parent) %></li>
+      <%- end -%>
+      <li><%= @genre.name %></li>
+    </ul>
+  </div>
 
-      <div class="col-md-3">
-        <!-- *** MENUS AND FILTERS *** -->
-        <%= render 'sidebar', current_genre: @genre %>
-        <!-- *** MENUS AND FILTERS END *** -->
-      </div>
+  <div class="col-md-3">
+    <!-- *** MENUS AND FILTERS *** -->
+    <%= render 'sidebar', current_genre: @genre %>
+    <!-- *** MENUS AND FILTERS END *** -->
+  </div>
 
-      <div class="col-md-9">
-        <div class="box">
-          <h1><%= @genre.name %></h1>
-          <p>上位10商品を表示しています。</p>
+  <div class="col-md-9">
+    <div class="box">
+      <h1><%= @genre.name %></h1>
+      <p>上位10商品を表示しています。</p>
+    </div>
+
+    <div class="row products">
+      <%- @genre.top10medias.each.with_index(1) do |medium, rank| -%>
+        <div class="col-md-4 col-sm-6">
+          <%= render 'media/medium', medium: medium, rank: rank %>
         </div>
-
-        <div class="row products">
-          <%- @genre.top10medias.each.with_index(1) do |item, index| -%>
-            <div class="col-md-4 col-sm-6">
-              <div class="product">
-                <div class="flip-container">
-                  <div align="center">
-                    <p><h3><%= index %>位</h3></p>
-                    <div class="flipper">
-                      <div class="front">
-                        <%= link_to medium_path(item) do %>
-                          <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                        <%- end -%>
-                      </div>
-                      <div class="back">
-                        <%= link_to medium_path(item) do %>
-                          <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                        <%- end -%>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <%= link_to medium_path(item), class: 'invisible' do %>
-                  <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-category-list">
-                <%- end -%>
-                <div class="text">
-                  <h3 class="text-category-list-title">
-                    <%= link_to item.title, medium_path(item) %>
-                  </h3>
-                  <p class="price">￥<%= item.price %></p>
-                  <p class="buttons">
-                  <%= link_to 'View detail', medium_path(item), class: 'btn btn-default' %>
-                  <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          <%- end -%>
-        </div>
-      </div>
+      <%- end -%>
     </div>
   </div>
 </div>

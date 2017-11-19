@@ -1,19 +1,28 @@
 class Genre
   include ActiveModel::Model
-  attr_accessor *%i(name id)
+  attr_accessor *%i(id name url parent_id)
 
   class << self
-    def music_genres
-      @music_genres ||= all_genres[:music_genres]
+    def root_genres
+      %w(33 34).map { |id | find(id) }
     end
 
-    def movie_genres
-      @movie_genres ||= all_genres[:movie_genres]
+    def genres(type)
+      where(parent_id: { movie: '33', music: '34' }[type])
     end
 
-    def find(name)
-      # XXX
-      music_genres.first
+    def find(id)
+      all_genres[id]
+    end
+
+    def find_by(conditions)
+      where(conditions).first
+    end
+
+    def where(conditions)
+      all_genres.select do |id, g|
+        conditions.all? { |key, value| g.send(key) == value }
+      end.values
     end
 
     private
@@ -22,35 +31,37 @@ class Genre
       @all_genres ||= all_genres_from_api
     end
 
+    def load_genre(ret, parent, object)
+      puts object['name']
+      ret[object['id']] = new(object.slice(*%w(id name url)).merge(parent_id: parent&.[]('id')))
+
+      object['subgenres'] && object['subgenres'].values.each { |value| load_genre(ret, object, value) }
+    end
+
     def all_genres_from_api
       # TODO url をキーにresponse をキャッシュするぞ！
       url = "http://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp"
       response = Faraday.get(url)
       result = JSON.parse(response.body)
-      # puts result
-      result.values.each.with_object({}) do |value, ret|
-        case  value["name"]
-        when "映画"
-          ret[:movie_genres] = value["subgenres"].values.map{|subgenre| MovieGenre.new(subgenre.slice(*%w(id name url)))}
-        when "ミュージック"
-          ret[:music_genres] = value["subgenres"].values.map{|subgenre| MusicGenre.new(subgenre.slice(*%w(id name url)))}
+
+      {}.tap do |ret|
+        result.values.each do |value|
+          load_genre(ret, nil, value)
         end
       end
     end
   end
 
-  # XXX
   def parent
-    MovieGenre.all.first
+    Genre.find(parent_id)
   end
 
-  # XXX
   def top10medias
-    case self
-    when MovieGenre
-      Movie.top10(:movie)
-    when MusicGenre
-      Music.top10(:music)
+    case parent_id
+    when '33'
+      Movie.top10(self)
+    when '34'
+      Music.top10(self)
     end
   end
 

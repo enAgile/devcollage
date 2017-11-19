@@ -1,16 +1,18 @@
-class Media
+class Medium
   include ActiveModel::Model
+
+  attr_accessor *%i(name summary rental_price price copyrights artist image_url genre_id)
 
   class << self
     # XXX
     def find(name)
-      movies_top10(:movie).first
+      movies_top10(Genre.find('33')).first
     end
 
     def top10_from_api(resource_name, genre)
       category = "top#{resource_name.to_s.pluralize}"
 
-      url = "https://itunes.apple.com/jp/rss/#{category}/limit=10/genre=#{genre}/json"
+      url = "https://itunes.apple.com/jp/rss/#{category}/limit=10/genre=#{genre.id}/json"
       response = Faraday.get(url)
       result = JSON.parse(response.body)
       result['feed']['entry'] || []
@@ -23,7 +25,9 @@ class Media
           copyrights: entry['im:name']['rights'],
           rental_price: build_price(entry['im:rentalPrice']),
           price: build_price(entry['im:price']),
-          summary: entry['summary']['lable']
+          summary: entry['summary']['lable'],
+          image_url: entry['im:image'].last['label'],
+          genre_id: entry['category']['attributes']['im:id']
         )
       end
     end
@@ -34,7 +38,9 @@ class Media
           name: entry['im:name']['label'],
           copyrights: entry['im:name']['rights'],
           rental_price: build_price(entry['im:rentalPrice']),
-          price: build_price(entry['im:price'])
+          price: build_price(entry['im:price']),
+          image_url: entry['im:image'].last['label'],
+          genre_id: entry['category']['attributes']['im:id']
         )
       end
     end
@@ -49,19 +55,16 @@ class Media
     end
   end
 
-  # XXX
+  # XXX image が不適切, 一覧では荒い画像でよい
   def image
-    'http://is2.mzstatic.com/image/thumb/Video3/v4/83/37/e1/8337e131-288a-05f4-baee-567495d7be6f/source/400x400bb.jpg'
+    image_url.sub(/\d+x\d+bb-\d+.jpg/, '400x400bb.jpg')
   end
 
-  # XXX
-  def title
-    name
-  end
+  # XXX title が不要
+  alias title name
 
-  # XXX
   def genre
-    Genre.music_genres.first
+    Genre.find(genre_id)
   end
 
   def to_param
