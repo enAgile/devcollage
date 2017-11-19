@@ -19,13 +19,14 @@ gem 'uglifier'
 gem 'webpacker'
 
 # assets
-gem 'sass-rails'
+gem 'animate.css-rails'
+gem 'bootstrap-sass'
+gem 'coffee-rails'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'owlcarousel2'
-gem 'font-awesome-rails'
-gem 'bootstrap-sass'
-gem 'animate.css-rails'
+gem 'sass-rails'
 gem 'waypoints-rails'
 
 group :development do
