@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+def add_genre(parent, object)
+  genre = Genre.create!(parent_id: parent&.id, name: object['name'], itunes_genre_id: object['id'])
+  object['subgenres']&.values&.each do |value|
+    add_genre(genre, value)
+  end
+end
+
+Genre.delete_all
+url = 'http://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp'
+response = Faraday.get(url)
+result = JSON.parse(response.body)
+result.values.each do |value|
+  add_genre(nil, value)
+end
+puts "Import #{Genre.count} genres."

@@ -6,13 +6,13 @@ class Medium
   class << self
     # XXX
     def find(name)
-      movies_top10(Genre.find('33')).first
+      movies_top10(Genre.root_genres.find_by(name: '映画')).first
     end
 
     def top10_from_api(resource_name, genre)
       category = "top#{resource_name.to_s.pluralize}"
 
-      url = "https://itunes.apple.com/jp/rss/#{category}/limit=10/genre=#{genre.id}/json"
+      url = "https://itunes.apple.com/jp/rss/#{category}/limit=10/genre=#{genre.itunes_genre_id}/json"
       response = Faraday.get(url)
       result = JSON.parse(response.body)
       result['feed']['entry'] || []
@@ -64,7 +64,7 @@ class Medium
   alias title name
 
   def genre
-    Genre.find(genre_id)
+    Genre.find_by(itunes_genre_id: genre_id)
   end
 
   def to_param
