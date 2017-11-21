@@ -22,7 +22,7 @@
     </div>
 
     <div class="row products">
-      <%- @genre.top10medias.each.with_index(1) do |medium, rank| -%>
+      <%- @genre.top10media.each.with_index(1) do |medium, rank| -%>
         <div class="col-md-4 col-sm-6">
           <%= render 'media/medium', medium: medium, rank: rank %>
         </div>

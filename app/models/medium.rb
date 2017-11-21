@@ -18,27 +18,21 @@ class Medium
       result['feed']['entry'] || []
     end
 
-    def movies_top10(genre)
-      top10_from_api(:movies, genre).map do |entry|
-        Movie.new(
-          name: entry['im:name']['label'],
-          copyrights: entry['im:name']['rights'],
-          rental_price: build_price(entry['im:rentalPrice']),
-          price: build_price(entry['im:price']),
-          summary: entry['summary']['lable'],
-          image_url: entry['im:image'].last['label'],
-          genre_id: entry['category']['attributes']['im:id']
-        )
-      end
-    end
+    def top10(type, genre)
+      type = case type
+             when :movie
+               :movies
+             when :music
+               :songs
+             end
 
-    def musics_top10(genre)
-      top10_from_api(:songs, genre).map do |entry|
-        Music.new(
+      top10_from_api(type, genre).map do |entry|
+        new(
           name: entry['im:name']['label'],
           copyrights: entry['im:name']['rights'],
           rental_price: build_price(entry['im:rentalPrice']),
           price: build_price(entry['im:price']),
+          summary: entry['summary']&.fetch('lable', nil),
           image_url: entry['im:image'].last['label'],
           genre_id: entry['category']['attributes']['im:id']
         )

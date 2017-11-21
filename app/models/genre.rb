@@ -37,12 +37,12 @@ class Genre < ApplicationRecord
     end
   end
 
-  def top10medias
+  def top10media
     case parent.name
     when '映画'
-      Movie.top10(self)
+      Medium.top10(:movie, self)
     when 'ミュージック'
-      Music.top10(self)
+      Medium.top10(:music, self)
     end
   end
 end
