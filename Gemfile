@@ -18,15 +18,12 @@ gem 'puma', '~> 3.7'
 gem 'uglifier'
 
 # assets
-gem 'animate.css-rails'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'owlcarousel2'
 gem 'sass-rails'
-gem 'waypoints-rails'
 
 group :development do
   gem 'annotate'
