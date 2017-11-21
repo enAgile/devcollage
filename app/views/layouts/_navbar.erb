@@ -27,9 +27,9 @@
         <li>
           <a href="/">Home</a>
         </li>
-        <%- %i(movie music).each do |genre_type| -%>
+        <%- %w(映画 ミュージック).each do |category| -%>
           <li class="dropdown yamm-fw">
-            <%= render 'dropdown', genre_type: genre_type %>
+            <%= render 'dropdown', category: category %>
           </li>
         <%- end -%>
       </ul>

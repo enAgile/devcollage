@@ -18,11 +18,11 @@ class Medium
       result['feed']['entry'] || []
     end
 
-    def top10(type, genre)
-      type = case type
-             when :movie
+    def top10(category, genre)
+      type = case category
+             when '映画'
                :movies
-             when :music
+             when 'ミュージック'
                :songs
              end
 
