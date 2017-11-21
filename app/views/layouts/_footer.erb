@@ -30,7 +30,7 @@
 
         <h5>Movie</h5>
         <ul>
-          <%- Genre.genres(:movie).each do |genre| -%>
+          <%- Genre.genres('映画').each do |genre| -%>
             <li><%= link_to genre.name, genre_path(genre) %></li>
           <%- end -%>
         </ul>
@@ -39,7 +39,7 @@
       <div class="col-md-3 col-sm-6">
         <h5>Music</h5>
         <ul>
-          <%- Genre.genres(:music).each do |genre| -%>
+          <%- Genre.genres('ミュージック').each do |genre| -%>
             <li><%= link_to genre.name, genre_path(genre) %></li>
           <%- end -%>
         </ul>

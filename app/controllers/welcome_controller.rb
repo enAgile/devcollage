@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @hot_movies= Movie.top10(Genre.root_genres.find_by(name: '映画')).first(5)
-    @hot_musics= Music.top10(Genre.root_genres.find_by(name: 'ミュージック')).first(5)
+    @hot_movies = Medium.where(category: '映画').limit(5)
+    @hot_musics = Medium.where(category: 'ミュージック').limit(5)
   end
 end

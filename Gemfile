@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.4'
 gem 'active_decorator'
 gem 'active_interaction'
 gem 'devise'
@@ -15,6 +14,7 @@ gem 'faraday'
 gem 'jbuilder', '~> 2.5'
 gem 'jp_prefecture'
 gem 'puma', '~> 3.7'
+gem 'rails', '~> 5.1.4'
 gem 'uglifier'
 
 # assets
@@ -40,19 +40,19 @@ group :test do
   gem 'database_rewinder'
   gem 'fuubar'
   gem 'poltergeist'
-  gem 'stripe-ruby-mock', '~> 2.4.0', :require => 'stripe_mock'
+  gem 'stripe-ruby-mock', '~> 2.4.0', require: 'stripe_mock'
   gem 'timecop'
 end
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'webmock' # or webmock  gem 'bullet'
+  gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'gimei'
   gem 'i18n-debug'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'webmock' # or webmock  gem 'bullet'
 end
 
 group :production do

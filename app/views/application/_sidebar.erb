@@ -7,9 +7,9 @@
   <div class="panel-body">
     <ul class="nav nav-pills nav-stacked category-menu">
       <li class="<%= 'active' if current_genre.id == 33 %>">
-        <a href="#">MOVIE</a>
+        <a href="#">映画</a>
         <ul>
-          <%- Genre.genres(:movie).each do |genre| -%>
+          <%- Genre.genres('映画').each do |genre| -%>
             <li>
               <%- if genre.id == current_genre.id -%>
                 <div style="background:#4fbfa8;"><%= link_to genre.name, genre_path(genre) %></div>
@@ -21,9 +21,9 @@
         </ul>
       </li>
       <li class="<%= 'active' if current_genre.id == 34 %>">
-        <a href="#">MUSIC</a>
+        <a href="#">ミュージック</a>
         <ul>
-          <%- Genre.genres(:music).each do |genre| -%>
+          <%- Genre.genres('ミュージック').each do |genre| -%>
             <li>
               <%- if genre.id == current_genre.id -%>
                 <div style="background:#4fbfa8;"><%= link_to genre.name, genre_path(genre) %></div>
