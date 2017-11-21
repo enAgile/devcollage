@@ -3,17 +3,14 @@
   <div class="col-md-12">
     <ul class="breadcrumb">
       <li><a href="/">Home</a></li>
-      <%- if @medium.genre.parent.present? -%>
-        <li><%= link_to @medium.genre.parent.name, genre_path(@medium.genre.parent) %></li>
-      <%- end -%>
-      <li><%= link_to @medium.genre.name, genre_path(@medium.genre) %></li>
+      <li><%= link_to @medium.category, genre_path(Genre.root_genres.find_by!(name: @medium.category)) %></li>
       <li><%= @medium.name %></li>
     </ul>
   </div>
 
   <div class="col-md-3">
     <!-- *** MENUS AND FILTERS *** -->
-    <%= render 'sidebar', current_genre: @medium.genre %>
+    <%= render 'sidebar', current_genre: Genre.root_genres.find_by!(name: @medium.category) %>
     <!-- *** MENUS AND FILTERS END *** -->
   </div>
 
@@ -52,8 +49,8 @@
       <div class="social">
         <h4>Show it to your friends</h4>
         <p>
-        <a href="http://www.facebook.com/dialog/feed?app_id=xxxxxxxxxx&picture=<%= @medium.image %>&name=My favorite <%= @medium.genre.name %>! - <%= @medium.title %>&display=page" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-        <a href="http://twitter.com/share?text=My favorite <%= @medium.genre.name %>! - <%= @medium.title %>" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+        <a href="http://www.facebook.com/dialog/feed?app_id=xxxxxxxxxx&picture=<%= @medium.image %>&name=My favorite <%= @medium.category %>! - <%= @medium.title %>&display=page" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+        <a href="http://twitter.com/share?text=My favorite <%= @medium.category %>! - <%= @medium.title %>" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
         </p>
       </div>
     </div>

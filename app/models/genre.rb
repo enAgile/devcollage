@@ -17,6 +17,8 @@
 
 class Genre < ApplicationRecord
   belongs_to :parent, class_name: 'Genre', required: false
+  has_many :media_rankings, dependent: :destroy
+  has_many :media, through: :media_rankings
 
   validates :name, presence: true
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121161516) do
+ActiveRecord::Schema.define(version: 20171121174821) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
@@ -20,6 +20,30 @@ ActiveRecord::Schema.define(version: 20171121161516) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.index ["parent_id"], name: "index_genres_on_parent_id"
+  end
+
+  create_table "media", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "category", null: false
+    t.integer "price_amount", null: false
+    t.string "price_currency", null: false
+    t.text "summary"
+    t.string "copyrights"
+    t.string "artist"
+    t.string "image_url"
+    t.integer "itunes_medium_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "media_rankings", force: :cascade do |t|
+    t.integer "medium_id"
+    t.integer "genre_id"
+    t.integer "rank", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_media_rankings_on_genre_id"
+    t.index ["medium_id"], name: "index_media_rankings_on_medium_id"
   end
 
   create_table "users", force: :cascade do |t|
