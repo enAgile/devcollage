@@ -12,7 +12,5 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
-//= require waypoints
-//= require owlcarousel2/owl.carousel
 //= require rails-ujs
 //= require front
