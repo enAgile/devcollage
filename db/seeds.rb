@@ -1,3 +1,5 @@
+logger = Rails.logger
+
 def add_genre(category, parent, object, depth)
   genre = Genre.create!(
     category: category,
@@ -21,12 +23,12 @@ Genre.delete_all
 url = 'http://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/genres?cc=jp'
 response = Faraday.get(url)
 result = JSON.parse(response.body)
-result.values.each do |value|
+result.each_values do |value|
   category = value['name']
   next unless category.in?(%w(映画 ミュージック ミュージックビデオ))
   add_genre(category, nil, value, 1)
 end
-puts "Import #{Genre.count} genres."
+logger.info "Import #{Genre.count} genres."
 
 #
 # Import Meida
@@ -58,7 +60,7 @@ Genre.all.find_each do |genre|
 
     genre.media_rankings.create!(medium: medium, rank: rank)
   end
-  puts "Import #{Medium.count} media. [genre: #{genre.name}]"
+  logger.info "Import #{Medium.count} media. [genre: #{genre.name}]"
 
   sleep(1)
 end

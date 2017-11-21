@@ -23,7 +23,7 @@ class Medium < ApplicationRecord
 
   class << self
     # XXX
-    def top10(category, genre)
+    def top10(_category, _genre)
       all.sample(10)
     end
   end
