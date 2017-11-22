@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
 #
 # Indexes
 #
@@ -26,5 +27,18 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:account]
+
+  attr_accessor :account
+
+  validates :name, uniqueness: { case_sensitive: false }
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if account = conditions.delete(:account)
+      where(conditions).where(["name = :value OR lower(email) = lower(:value)", { :value => account}]).first
+    else
+      where(conditions).first
+    end
+  end
 end
