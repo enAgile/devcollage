@@ -1,24 +1,23 @@
-# README
+# デベロッパーズ大学
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://info.enagile.jp/developers-college/
 
-Things you may want to cover:
+デベロッパーズ大学は、オンライン学習でプログラミングを学んだだけではカバーしきれない現場で主流な開発を、実際の企業の社員の指導のもと体験する、短期集中型プログラムです。
 
-* Ruby version
+## カリキュラム
 
-* System dependencies
+https://github.com/enAgile/devcollege-1/wiki
 
-* Configuration
+## チームメンバー
 
-* Database creation
+### せととしき
 
-* Database initialization
+* GitHub:
 
-* How to run the test suite
+### 竹本和彰
 
-* Services (job queues, cache servers, search engines, etc.)
+* GitHub:
 
-* Deployment instructions
+### 水谷裕生
 
-* ...
+* GitHub:
