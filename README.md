@@ -10,14 +10,22 @@ https://github.com/enAgile/devcollege-1/wiki
 
 ## チームメンバー
 
-### せととしき
+### 学生
+
+### xxxx
+
+* GitHub: https://github.com/xxxx
+
+### メンター
+
+#### せととしき
 
 * GitHub: https://github.com/tskst
 
-### 竹本和彰
+#### 竹本和彰
 
-* GitHub:
+* GitHub: https://github.com/libkazz
 
-### 水谷裕生
+#### 水谷裕生
 
 * GitHub: https://github.com/hirotaka
