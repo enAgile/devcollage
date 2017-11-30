@@ -20,4 +20,4 @@ https://github.com/enAgile/devcollege-1/wiki
 
 ### 水谷裕生
 
-* GitHub:
+* GitHub: https://github.com/hirotaka
