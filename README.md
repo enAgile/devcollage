@@ -12,7 +12,7 @@ https://github.com/enAgile/devcollege-1/wiki
 
 ### せととしき
 
-* GitHub:
+* GitHub: https://github.com/tskst
 
 ### 竹本和彰
 
