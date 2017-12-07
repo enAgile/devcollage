@@ -51,6 +51,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'sqlite3'
   gem 'webmock' # or webmock  gem 'bullet'
 end
