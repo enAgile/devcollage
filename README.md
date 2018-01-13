@@ -16,6 +16,10 @@ https://github.com/enAgile/devcollege-1/wiki
 
 * GitHub: https://github.com/xxxx
 
+### 竹本和彰
+
+* GitHub: https://github.com/libkazz
+
 ### メンター
 
 #### せととしき
