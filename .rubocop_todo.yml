@@ -13,7 +13,7 @@ Lint/AssignmentInCondition:
     - 'db/seeds.rb'
 
 # Offense count: 1
-Lint/RescueWithoutErrorClass:
+Lint/Style/RescueStandardError:
   Exclude:
     - 'db/seeds.rb'
 
