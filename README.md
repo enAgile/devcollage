@@ -33,3 +33,7 @@ https://github.com/enAgile/devcollege-1/wiki
 #### 水谷裕生
 
 * GitHub: https://github.com/hirotaka
+
+#### せととしき2
+
+* GitHub: https://github.com/setochan
