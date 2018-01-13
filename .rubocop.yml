@@ -5,6 +5,7 @@ AllCops:
     - 'config/unicorn.rb'
     - 'db/migrate/*'
     - 'db/schema.rb'
+    - 'db/seeds.rb'
     - 'bin/*'
     - 'node_modules/**/*'
     - 'config/puma.rb'
@@ -59,5 +60,7 @@ Style/TrailingCommaInArguments:
 Style/TrailingCommaInLiteral:
   Enabled: false
 
+Lint/AssignmentInCondition:
+  Enabled: false
 
 inherit_from: .rubocop_todo.yml

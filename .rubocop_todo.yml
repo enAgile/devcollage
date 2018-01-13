@@ -13,7 +13,7 @@ Lint/AssignmentInCondition:
     - 'db/seeds.rb'
 
 # Offense count: 1
-Lint/RescueWithoutErrorClass:
+Lint/Style/RescueStandardError:
   Exclude:
     - 'db/seeds.rb'
 
@@ -31,3 +31,7 @@ Lint/SafeNavigationChain:
 Style/IfUnlessModifier:
   Exclude:
     - 'config/routes.rb'
+
+Rails/FindBy:
+  Exclude:
+    - 'app/models/user.rb'

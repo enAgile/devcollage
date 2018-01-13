@@ -30,6 +30,8 @@ group :development do
   gem 'letter_opener_web'
   gem 'listen'
   gem 'railroady'
+  gem 'rubocop'
+  gem 'seed_dump'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
