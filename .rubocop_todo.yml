@@ -31,3 +31,7 @@ Lint/SafeNavigationChain:
 Style/IfUnlessModifier:
   Exclude:
     - 'config/routes.rb'
+
+Rails/FindBy:
+  Exclude:
+    - 'app/models/user.rb'
