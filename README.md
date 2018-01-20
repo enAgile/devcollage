@@ -12,13 +12,9 @@ https://github.com/enAgile/devcollege-1/wiki
 
 ### 学生
 
-### xxxx
+#### xxxx
 
 * GitHub: https://github.com/xxxx
-
-### 竹本和彰
-
-* GitHub: https://github.com/libkazz
 
 ### メンター
 
@@ -33,7 +29,3 @@ https://github.com/enAgile/devcollege-1/wiki
 #### 水谷裕生
 
 * GitHub: https://github.com/hirotaka
-
-#### せととしき2
-
-* GitHub: https://github.com/setochan
