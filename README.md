@@ -16,9 +16,9 @@ https://github.com/enAgile/devcollege-1/wiki
 
 * GitHub: https://github.com/minamthr
 
-#### xxxx
+#### 田畑雄也
 
-* GitHub: https://github.com/xxxx
+* GitHub: https://github.com/yuya1212h4
 
 ### メンター
 
