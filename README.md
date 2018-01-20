@@ -38,3 +38,7 @@ https://github.com/enAgile/devcollege-1/wiki
 #### 水谷裕生
 
 * GitHub: https://github.com/hirotaka
+
+#### 上野潤一郎
+
+* GitHub: https://github.com/jun116
