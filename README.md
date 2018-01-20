@@ -12,9 +12,9 @@ https://github.com/enAgile/devcollege-1/wiki
 
 ### 学生
 
-#### xxxx
+#### 田畑雄也
 
-* GitHub: https://github.com/xxxx
+* GitHub: https://github.com/yuya1212h4
 
 ### メンター
 
