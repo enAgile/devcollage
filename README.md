@@ -12,13 +12,18 @@ https://github.com/enAgile/devcollege-1/wiki
 
 ### 学生
 
+
 #### 加瀬雄三
 
 * GitHub: https://github.com/u20ks
 
-#### xxxx
+#### 源治弥
 
-* GitHub: https://github.com/xxxx
+* GitHub: https://github.com/minamthr
+
+#### 田畑雄也
+
+* GitHub: https://github.com/yuya1212h4
 
 ### メンター
 
