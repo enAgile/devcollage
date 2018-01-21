@@ -25,6 +25,11 @@ https://github.com/enAgile/devcollege-1/wiki
 
 * GitHub: https://github.com/yuya1212h4
 
+#### 服部淳
+
+* GitHub: https://github.com/junjun5
+
+
 ### メンター
 
 #### せととしき
