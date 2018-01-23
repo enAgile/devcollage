@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122152334) do
+ActiveRecord::Schema.define(version: 20180123104540) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20171122152334) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.index ["parent_id"], name: "index_genres_on_parent_id"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "inquirer"
+    t.string "email"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "media", force: :cascade do |t|
