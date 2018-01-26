@@ -23,7 +23,7 @@
     <h3 class="text-category-list-title">
       <%= link_to medium.title, medium_path(medium) %>
     </h3>
-    <p class="price"><%= medium.price %></p>
+    <p class="price"><%= medium.price_add_tax %></p>
     <p class="buttons">
     <%= link_to 'View detail', medium_path(medium), class: 'btn btn-default' %>
     <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
