@@ -27,7 +27,8 @@
           <h1 class="text-center"><%= @medium.title %></h1>
           <p class="goToDescription"><a href="#details" class="scroll-to">製品の詳細へ移動</a>
           </p>
-          <p class="price"><%= @medium.price %>(税込み)</p>
+
+          <p class="price"><%= @medium.price_with_tax %></p>
 
           <p class="text-center buttons">
           <a href="basket" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
