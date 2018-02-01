@@ -7,9 +7,9 @@ class InquiriesController < ApplicationController
     inquiry = Inquiry.new(inquiry_params)
     inquiry.save
   end
-  
-  private 
-  
+
+  private
+
   def inquiry_params
     params.require(:inquiry).permit(:inquirer, :email, :body)
   end
