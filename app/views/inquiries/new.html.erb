@@ -1,0 +1,9 @@
+<%= form_for(@inquiry) do |f| %>
+    <%= f.label :inquirer %>
+    <%= f.text_field :inquirer %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    <%= f.submit '送信する' %>
+<% end %>
