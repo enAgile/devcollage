@@ -7,14 +7,14 @@
             <p><h4><%= index %>位</h4></p>
             <div class="flipper">
               <div class="front">
-                <a href="#">
+                <%= link_to medium_path(item) do %>
                   <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-index-movie">
-                </a>
+                <%- end -%>
               </div>
               <div class="back">
-                <a href="#">
+                <%= link_to medium_path(item) do %>
                   <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-index-movie">
-                </a>
+                <%- end -%>
               </div>
             </div>
           </div>
@@ -23,7 +23,9 @@
           <img src="<%= item.image %>" alt="<%= item.title %>" class="img-responsive img-index-movie">
         </a>
         <div class="text">
-          <h3><a href="#"><%= item.title %></a></h3>
+          <h3>
+            <%= link_to item.title, medium_path(item) %>
+          </h3>
           <p class="price"><%= item.price.to_s %>(税込み)</p>
         </div>
       </div>
