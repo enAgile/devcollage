@@ -21,6 +21,8 @@ class Medium < ApplicationRecord
   has_many :media_rankings, dependent: :destroy
   has_many :genres, through: :media_rankings
 
+  scope :sort_rank, -> { joins(:media_rankings).includes(:media_rankings).order('media_rankings.rank').limit(10) }
+
   class << self
     # XXX
     def top10(_category, _genre)
