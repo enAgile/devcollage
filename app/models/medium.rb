@@ -30,7 +30,7 @@ class Medium < ApplicationRecord
 
   # XXX image が不適切, 一覧では荒い画像でよい
   def image
-    image_url.sub(/\d+x\d+bb-\d+.jpg/, '400x400bb.jpg')
+    image_url.sub(/\d+x\d+bb-\d+.jpg/, '600x600bb.jpg')
   end
 
   # XXX title が不要
